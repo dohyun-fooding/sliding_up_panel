@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
   double _fabHeight = 0;
   double _panelHeightOpen = 0;
   double _panelHeightClosed = 95.0;
+  PanelController _panelController = PanelController();
 
   @override
   void initState() {
@@ -65,6 +66,7 @@ class _HomePageState extends State<HomePage> {
         alignment: Alignment.topCenter,
         children: <Widget>[
           SlidingUpPanel(
+            controller: _panelController,
             maxHeight: _panelHeightOpen,
             minHeight: _panelHeightClosed,
             parallaxEnabled: true,
@@ -89,7 +91,14 @@ class _HomePageState extends State<HomePage> {
                 Icons.gps_fixed,
                 color: Theme.of(context).primaryColor,
               ),
-              onPressed: () {},
+              onPressed: () {
+                print(_panelController.isPanelOpen);
+                if (_panelController.isPanelShown) {
+                  _panelController.hide();
+                } else {
+                  _panelController.show();
+                }
+              },
               backgroundColor: Colors.white,
             ),
           ),
