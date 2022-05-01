@@ -310,9 +310,12 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
             animation: _ac,
             builder: (context, child) {
               return AnimatedContainer(
+                curve: Curves.linear,
                 duration: Duration(milliseconds: 100),
-                height: _isPanelVisible ?  _ac.value * (widget.maxHeight - widget.minHeight) +
-                    widget.minHeight : 0,
+                height: _isPanelVisible
+                    ? _ac.value * (widget.maxHeight - widget.minHeight) +
+                        widget.minHeight
+                    : 0,
                 margin: widget.margin,
                 padding: widget.padding,
                 decoration: widget.renderPanelSheet
